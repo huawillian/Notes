@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { ApiService } from '../services/api.service';
 import { Note } from '../models/note.model';
@@ -11,7 +12,7 @@ import { Note } from '../models/note.model';
 export class NotesComponent implements OnInit {
   notes: Note[];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.notes = this.apiService.get() as Note[];
@@ -19,6 +20,7 @@ export class NotesComponent implements OnInit {
 
   view(i) {
     // route to idx to show details
+    this.router.navigate(['details', i]);
   }
 
   remove(i) {
@@ -29,7 +31,6 @@ export class NotesComponent implements OnInit {
   addNew() {
     let idx = this.apiService.add(new Note());
     this.notes = this.apiService.get() as Note[];
-    // then route to idx to show details
   }
 
 }

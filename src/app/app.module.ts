@@ -7,6 +7,7 @@ import { NoteComponent } from './note/note.component';
 import { AddComponent } from './add/add.component';
 import { DetailsComponent } from './details/details.component';
 import { ApiService } from './services/api.service';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ApiService } from './services/api.service';
     DetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RoutingModule
   ],
   providers: [
     ApiService
