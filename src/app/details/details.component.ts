@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable'
 
@@ -19,12 +19,16 @@ export class DetailsComponent implements OnInit {
   editContent: string;
   editTitle: string;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) { }
 
   retrieveDetails() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = +params.get('id');
-      this.note = this.apiService.get(this.id) as Note;
+      try {
+        this.note = this.apiService.get(this.id) as Note;
+      } catch(e) {
+        this.router.navigate(['/']);
+      }
     });
   }
 
@@ -49,5 +53,9 @@ export class DetailsComponent implements OnInit {
     this.editContent = this.note.content;
     this.editTitle = this.note.title;
     this.isEdit = false;
+  }
+
+  onBack() {
+    this.router.navigate(['/']);
   }
 }

@@ -1,5 +1,7 @@
-<div class="card">
-  <h1 class="note-title"> {{note.title}} </h1>
-  <button class="btn btn-danger remove-btn" (click)="removeEvent.emit()"> Remove </button>
-  <button class="btn btn-success view-btn" (click)="viewEvent.emit()"> View </button>
+<div class="card item center">
+  <div>
+    <h1 class="note-title m-3"> {{note.title}} </h1>
+    <button class="btn btn-success view-btn container-fluid m-1" (click)="viewEvent.emit()"> View </button>
+    <button class="btn btn-danger remove-btn container-fluid m-1" (click)="removeEvent.emit()"> Remove </button>
+  </div>
 </div>

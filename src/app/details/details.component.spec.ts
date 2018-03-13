@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './details.component';
 import { By } from '@angular/platform-browser';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from '../models/note.model';
 
 describe('DetailsComponent', () => {
@@ -18,7 +18,8 @@ describe('DetailsComponent', () => {
       declarations: [ DetailsComponent ],
       providers: [
         { provide: ActivatedRoute, useValue: null}, 
-        ApiService
+        ApiService,
+        Router
       ],
       imports: [
         FormsModule

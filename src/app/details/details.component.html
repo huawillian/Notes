@@ -1,11 +1,12 @@
-<div *ngIf="note" class="card">
-  <h1 *ngIf="!isEdit" class="title-view"> {{note.title}} </h1>
-  <input *ngIf="isEdit" type="text" class="edit-title" [(ngModel)]="editTitle">
+<div *ngIf="note !== undefined" class="card">
+  <h1 *ngIf="!isEdit" class="title-view m-3"> {{note.title}} </h1>
+  <input *ngIf="isEdit" type="text" class="edit-title m-3" [(ngModel)]="editTitle">
   
-  <pre *ngIf="!isEdit" class="content-view"> {{note.content}} </pre>
-  <button *ngIf="!isEdit" class="btn btn-secondary edit-btn" (click)="onEdit()"> Edit </button>
-  
-  <textarea rows="5" *ngIf="isEdit" class="edit-content" [(ngModel)]="editContent"></textarea>  
-  <button *ngIf="isEdit" class="btn btn-primary save-btn" (click)="onSave()"> Save </button>
-  <button *ngIf="isEdit" class="btn btn-danger cancel-btn" (click)="onCancel()"> Cancel </button>
+  <pre *ngIf="!isEdit" class="content-view m-3"> {{note.content}} </pre>
+  <button *ngIf="!isEdit" class="btn btn-secondary edit-btn m-3" (click)="onEdit()"> Edit </button>
+  <button *ngIf="!isEdit" class="btn btn-success edit-btn m-3" (click)="onBack()"> Back </button>
+
+  <textarea rows="5" *ngIf="isEdit" class="edit-content m-3" [(ngModel)]="editContent"></textarea>  
+  <button *ngIf="isEdit" class="btn btn-primary save-btn m-3" (click)="onSave()"> Save </button>
+  <button *ngIf="isEdit" class="btn btn-danger cancel-btn m-3" (click)="onCancel()"> Cancel </button>
 </div>

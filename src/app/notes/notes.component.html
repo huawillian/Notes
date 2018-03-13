@@ -1,3 +1,4 @@
-<h1> Notes </h1>
-<app-note class="note" *ngFor="let note of notes; let i = index" [note]="note" (remove)="remove(i)" (view)="view(i)"> </app-note>
-<app-add class="new" (click)="addNew()"> </app-add>
+<div class="container-fluid grid">
+    <app-note class="note m-2" *ngFor="let note of notes; let i = index" [note]="note" (remove)="remove(i)" (view)="view(i)"> </app-note>
+    <app-add class="new m-2" (click)="addNew()"> </app-add>
+</div>

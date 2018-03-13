@@ -1,0 +1,11 @@
+.item {
+    height: 30vw;
+    width: 30vw;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
