@@ -15,14 +15,39 @@ import { ApiService } from '../services/api.service';
 export class DetailsComponent implements OnInit {
   id: number;
   note: Note;
-  
+  isEdit: boolean = false;
+  editContent: string;
+  editTitle: string;
+
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
-  ngOnInit() {
+  retrieveDetails() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = +params.get('id');
       this.note = this.apiService.get(this.id) as Note;
     });
   }
 
+  ngOnInit() {
+    this.retrieveDetails();
+  }
+
+  onEdit() {
+    this.editContent = this.note.content;
+    this.editTitle = this.note.title;
+    this.isEdit = true;
+  }
+
+  onSave() {
+    this.note.content = this.editContent;
+    this.note.title = this.editTitle;
+    this.isEdit = false;
+    this.apiService.change(this.id, this.note);
+  }
+
+  onCancel() {
+    this.editContent = this.note.content;
+    this.editTitle = this.note.title;
+    this.isEdit = false;
+  }
 }

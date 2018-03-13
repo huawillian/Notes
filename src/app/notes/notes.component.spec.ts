@@ -5,6 +5,8 @@ import { ApiService } from '../services/api.service';
 import { Note } from '../models/note.model';
 import { By } from '@angular/platform-browser';
 import { NoteComponent } from '../note/note.component';
+import { AddComponent } from '../add/add.component';
+import { Router } from '@angular/router';
 
 describe('NotesComponent', () => {
   let component: NotesComponent;
@@ -15,9 +17,13 @@ describe('NotesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ 
         NotesComponent,
-        NoteComponent
+        NoteComponent,
+        AddComponent
       ],
-      providers: [ ApiService ]
+      providers: [
+        ApiService,
+        { provide: Router, useValue: { navigate: ()=>{} }}
+      ]
     })
     .compileComponents();
   }));

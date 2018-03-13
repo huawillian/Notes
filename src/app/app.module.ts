@@ -8,6 +8,7 @@ import { AddComponent } from './add/add.component';
 import { DetailsComponent } from './details/details.component';
 import { ApiService } from './services/api.service';
 import { RoutingModule } from './routing/routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RoutingModule } from './routing/routing.module';
   ],
   imports: [
     BrowserModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
   providers: [
     ApiService
